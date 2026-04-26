@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Play } from 'lucide-react';
+import { Play, Trash2 } from 'lucide-react';
 import BackButton from '../components/BackButton';
 
 interface WorkDetail {
@@ -18,6 +18,7 @@ interface WorkDetail {
 
 export default function WorkDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [work, setWork] = useState<WorkDetail | null>(null);
 
   useEffect(() => {
@@ -26,12 +27,33 @@ export default function WorkDetail() {
       .then(data => setWork(data));
   }, [id]);
 
+  const handleDelete = async () => {
+    if (window.confirm('确定要删除这个作品吗？')) {
+      try {
+        await fetch(`/api/works/${id}`, { method: 'DELETE' });
+        navigate(-1);
+      } catch (err) {
+        console.error('Failed to delete work', err);
+      }
+    }
+  };
+
   if (!work) return <div className="h-screen flex items-center justify-center font-serif text-white/50">Loading...</div>;
 
   return (
     <article className="w-full pb-32 pt-28 px-6 md:px-20">
       <div className="flex flex-col gap-8 max-w-6xl mx-auto">
-        <BackButton />
+        <div className="flex items-center justify-between">
+          <BackButton />
+          <button 
+             onClick={handleDelete}
+             className="flex items-center gap-2 text-rose-500/50 hover:text-rose-500 transition-colors mb-8 group"
+             title="删除作品"
+          >
+             <Trash2 size={16} className="group-hover:scale-110 transition-transform" />
+             <span className="text-sm tracking-widest font-medium">删除作品</span>
+          </button>
+        </div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
            <span className="text-[var(--color-accent)] tracking-[0.2em] text-xs mb-6 block">
               {work.type === 'ai_drama' ? 'AI短剧项目' : '摄影展览'}

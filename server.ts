@@ -126,6 +126,13 @@ app.post('/api/works', (req, res) => {
   res.status(201).json({ id: result.lastInsertRowid });
 });
 
+app.delete('/api/works/:id', (req, res) => {
+  const stmt = db.prepare('DELETE FROM works WHERE id = ?');
+  const result = stmt.run(req.params.id);
+  if (result.changes === 0) return res.status(404).json({ error: 'Not found' });
+  res.json({ success: true });
+});
+
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
