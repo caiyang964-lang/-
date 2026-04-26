@@ -3,7 +3,8 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { Camera, Film, User, UploadCloud } from 'lucide-react';
+import { UploadCloud } from 'lucide-react';
+import CustomCursor from './CustomCursor';
 
 export default function Layout() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -46,6 +47,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col relative w-full font-sans bg-[var(--color-bg)] text-[var(--color-text)]">
+      <CustomCursor />
       {/* Background Atmosphere - Vivid but not messy */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div 
@@ -67,7 +69,7 @@ export default function Layout() {
 
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-center backdrop-blur-sm bg-white/10 border-b border-black/5">
         <Link to="/" className="text-2xl font-serif tracking-widest uppercase font-light text-[var(--color-text)]">
-          Lumière
+          Frame Zero
         </Link>
         <nav className="hidden md:flex items-center space-x-10">
           {navItems.map((item) => (
@@ -105,7 +107,7 @@ export default function Layout() {
       </main>
 
       <footer className="w-full py-12 px-6 border-t border-black/5 flex flex-col md:flex-row items-center justify-between z-10 bg-white/40 backdrop-blur-md mt-auto">
-        <p className="text-black/40 text-xs tracking-widest uppercase">© {new Date().getFullYear()} Lumière. Personal Portfolio.</p>
+        <p className="text-black/40 text-xs tracking-widest uppercase">© {new Date().getFullYear()} Frame Zero. Personal Portfolio.</p>
         <div className="flex space-x-6 mt-6 md:mt-0 text-black/40">
           <Link to="/ai-dramas" className="hover:text-black transition-colors text-[12px] tracking-widest font-medium">AI短剧</Link>
           <Link to="/photography" className="hover:text-black transition-colors text-[12px] tracking-widest font-medium">摄影作品</Link>

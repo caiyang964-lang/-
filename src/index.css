@@ -26,7 +26,18 @@ body {
   color: #FFF;
 }
 
-/* Custom Scrollbar for a polished feel */
+@media (pointer: fine) {
+  body, 
+  body *, 
+  a, 
+  button, 
+  input, 
+  textarea, 
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

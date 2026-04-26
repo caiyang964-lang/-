@@ -40,47 +40,53 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Featured Categories Split */}
-      <section className="w-full px-6 md:px-20 mt-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-          {/* AI Drama Card */}
-          <Link to="/ai-dramas" className="group block h-[70vh] relative overflow-hidden rounded-xl shadow-xl shadow-rose-900/5">
-             <div className="absolute inset-0 bg-stone-100 overflow-hidden">
+      {/* Featured Categories Editorial Layout */}
+      <section className="w-full px-6 md:px-20 mt-32 lg:mt-40 max-w-7xl mx-auto">
+        <div className="flex flex-col gap-32 lg:gap-48">
+          {/* AI Drama Section */}
+          <Link to="/ai-dramas" className="group flex flex-col md:flex-row items-center gap-12 md:gap-20 cursor-pointer">
+             <div className="w-full md:w-3/5 overflow-hidden rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] relative aspect-[4/3] bg-stone-100">
                 <img 
                   src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=3000&auto=format&fit=crop" 
-                  alt="AI Dramas" 
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-[0.25,1,0.5,1]"
+                  alt="AI短剧" 
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-[0.25,1,0.5,1]"
                 />
              </div>
-             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-10">
-                <div className="overflow-hidden">
-                  <h2 className="font-sans text-4xl tracking-widest font-light text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    AI短剧
-                  </h2>
-                </div>
-                <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500">
-                   <p className="mt-4 text-sm text-white/80 tracking-widest uppercase">Explore the surreal &amp; generated narratives.</p>
+             <div className="w-full md:w-2/5 flex flex-col">
+                <span className="text-[var(--color-accent)] tracking-[0.2em] text-xs mb-4 uppercase inline-block font-medium">01 • Generated Realities</span>
+                <h2 className="text-4xl md:text-5xl font-light tracking-wide text-[var(--color-text)] mb-6 group-hover:text-[var(--color-accent)] transition-colors">
+                  AI短剧
+                </h2>
+                <p className="text-black/60 font-light leading-relaxed mb-10 max-w-sm text-[15px]">
+                  Explore the surreal & generated narratives exploring the meaning of consciousness in an AI-driven society.
+                </p>
+                <div className="flex items-center gap-3 text-sm tracking-[0.15em] font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                  <span className="border-b border-black/20 pb-1 group-hover:border-[var(--color-accent)] transition-colors">进入放映厅</span>
+                  <span className="group-hover:translate-x-2 transition-transform duration-500 ease-out">→</span>
                 </div>
              </div>
           </Link>
 
-          {/* Photography Card */}
-          <Link to="/photography" className="group block h-[70vh] relative overflow-hidden md:-translate-y-16 rounded-xl shadow-xl shadow-rose-900/5">
-             <div className="absolute inset-0 bg-stone-100 overflow-hidden">
+          {/* Photography Section */}
+          <Link to="/photography" className="group flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20 cursor-pointer">
+             <div className="w-full md:w-1/2 overflow-hidden rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] relative aspect-[3/4] bg-stone-100">
                 <img 
                   src="https://images.unsplash.com/photo-1621570074981-ee6a0145c8b5?q=80&w=3000&auto=format&fit=crop" 
-                  alt="Photography" 
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-[0.25,1,0.5,1]"
+                  alt="摄影作品" 
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-[0.25,1,0.5,1]"
                 />
              </div>
-             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-10">
-                <div className="overflow-hidden">
-                  <h2 className="font-sans text-4xl tracking-widest font-light text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    摄影作品
-                  </h2>
-                </div>
-                <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500">
-                   <p className="mt-4 text-sm text-white/80 tracking-widest uppercase">Moments frozen in time and space.</p>
+             <div className="w-full md:w-1/2 flex flex-col items-start md:items-end md:text-right">
+                <span className="text-[var(--color-accent)] tracking-[0.2em] text-xs mb-4 uppercase inline-block font-medium">02 • Frozen Time</span>
+                <h2 className="text-4xl md:text-5xl font-light tracking-wide text-[var(--color-text)] mb-6 group-hover:text-[var(--color-accent)] transition-colors">
+                  摄影作品
+                </h2>
+                <p className="text-black/60 font-light leading-relaxed mb-10 max-w-sm text-[15px]">
+                  Moments frozen in time and space. Capturing raw human emotion and architectural poetry through the analog lens.
+                </p>
+                <div className="flex items-center justify-end gap-3 text-sm tracking-[0.15em] font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                   <span className="group-hover:-translate-x-2 transition-transform duration-500 ease-out">←</span>
+                   <span className="border-b border-black/20 pb-1 group-hover:border-[var(--color-accent)] transition-colors">浏览画廊</span>
                 </div>
              </div>
           </Link>

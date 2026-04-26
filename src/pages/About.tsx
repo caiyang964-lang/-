@@ -35,17 +35,17 @@ export default function About() {
            
            <div className="space-y-6 font-light text-black/70 leading-relaxed text-sm md:text-base">
              <p>
-               I am a visual storyteller navigating the intersection of artificial intelligence and traditional optical physics. My work explores how machines hallucinate reality, and how we, in turn, photograph the remnants of it.
+               I blend traditional cinematography with AI generation. I believe images should breathe — imperfect, narrative-driven, alive. From AI-assisted commercials to editorial series like Ruins Botany, I direct neural networks as if they were analog film. My work doesn't chase perfection; it chases soul. Where latent space meets depth of field.
              </p>
              <p>
-               With a background in cinematography and a deep obsession with generative models, I create short dramas that blur the line between human intent and algorithmic serendipity. When I'm not prompting the machine, I try to capture the quiet, immutable parts of the real world through my lens.
+               我融合传统电影摄影与AI生成技术。我相信影像应有呼吸感——不完美、有叙事、鲜活。从AI辅助的广告到《废墟植物志》，我像操控模拟胶片一样驾驭神经网络。我的作品不追求完美，只追求灵魂。潜空间与景深在此交汇。
              </p>
              <p className="pt-8 border-t border-black/10">
                Based in Tokyo. Available for commissions and gallery exhibitions worldwide.
              </p>
              <div className="pt-8 flex flex-col gap-2">
                 <span className="uppercase text-[10px] tracking-[0.2em] text-[var(--color-accent)]">Contact</span>
-                <a href="mailto:hello@lumiere.studio" className="font-serif italic text-2xl text-black hover:text-[var(--color-accent)] transition-colors">hello@lumiere.studio</a>
+                <a href="mailto:hello@framezero.studio" className="font-serif italic text-2xl text-black hover:text-[var(--color-accent)] transition-colors">hello@framezero.studio</a>
              </div>
            </div>
         </motion.div>
