@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+import { api } from '../lib/api';
 
 export default function Upload() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    type: 'ai_drama',
+    type: 'ai_drama' as 'ai_drama' | 'photography',
     title: '',
     description: '',
     coverImage: '',
@@ -27,11 +28,7 @@ export default function Upload() {
     };
 
     try {
-      await fetch('/api/works', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
+      await api.createWork(body);
       navigate(formData.type === 'ai_drama' ? '/ai-dramas' : '/photography');
     } catch (err) {
       console.error(err);

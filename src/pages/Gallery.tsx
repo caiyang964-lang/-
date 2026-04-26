@@ -3,26 +3,17 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import BackButton from '../components/BackButton';
-
-interface Work {
-  id: number;
-  type: string;
-  title: string;
-  description: string;
-  coverImage: string;
-}
+import { api, Work } from '../lib/api';
 
 export default function Gallery({ type }: { type: 'ai_drama' | 'photography' }) {
   const [works, setWorks] = useState<Work[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/works?type=${type}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setWorks(data);
-        setLoading(false);
-      });
+    api.getWorks(type).then(data => {
+      setWorks(data);
+      setLoading(false);
+    });
   }, [type]);
 
   if (loading) return <div className="h-screen w-full flex items-center justify-center font-serif italic text-black/40">Loading...</div>;

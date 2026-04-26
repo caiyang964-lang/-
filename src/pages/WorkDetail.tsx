@@ -3,34 +3,23 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Play, Trash2 } from 'lucide-react';
 import BackButton from '../components/BackButton';
-
-interface WorkDetail {
-  id: number;
-  type: string;
-  title: string;
-  description: string;
-  coverImage: string;
-  mediaUrl: string[];
-  script: string;
-  assets: string[];
-  createdAt: string;
-}
+import { api, Work } from '../lib/api';
 
 export default function WorkDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [work, setWork] = useState<WorkDetail | null>(null);
+  const [work, setWork] = useState<Work | null>(null);
 
   useEffect(() => {
-    fetch(`/api/works/${id}`)
-      .then(res => res.json())
-      .then(data => setWork(data));
+    if (id) {
+      api.getWork(id).then(data => setWork(data));
+    }
   }, [id]);
 
   const handleDelete = async () => {
-    if (window.confirm('确定要删除这个作品吗？')) {
+    if (id && window.confirm('确定要删除这个作品吗？')) {
       try {
-        await fetch(`/api/works/${id}`, { method: 'DELETE' });
+        await api.deleteWork(id);
         navigate(-1);
       } catch (err) {
         console.error('Failed to delete work', err);
